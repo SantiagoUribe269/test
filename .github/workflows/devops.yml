@@ -6,10 +6,6 @@ on:
   pull_request:
     branches: [ main ]
 
-env:
-  AWS_REGION: us-east-1
-  ECR_REPO_NAME: laboratorio-02
-  DOCKERHUB_REPO_NAME: laboratorio-02
 
 jobs:
   test:
