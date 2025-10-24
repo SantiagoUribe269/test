@@ -28,9 +28,8 @@ jobs:
           file: ./proyecto_02/Dockerfile
           push: false
           tags: ${{ env.DOCKERHUB_REPO_NAME }}:test-${{ github.sha }}
-          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPO_NAME }}:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_REPO_NAME }}:buildcache,mode=max
-    
+          # Remover cache-from y cache-to para el job de test
+      
     outputs:
       build_tag: ${{ github.sha }}
 
@@ -99,8 +98,9 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=registry,ref=${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPO_NAME }}:buildcache
-          cache-to: type=registry,ref=${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPO_NAME }}:buildcache,mode=max
+          # Remover las líneas de cache que causan el problema
+          # cache-from: type=registry,ref=${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPO_NAME }}:buildcache
+          # cache-to: type=registry,ref=${{ steps.login-ecr.outputs.registry }}/${{ env.ECR_REPO_NAME }}:buildcache,mode=max
 
       # --- Resumen actualizado ---
       - name: Summary
