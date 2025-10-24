@@ -2,14 +2,14 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches: [ main ]
+    branches: [ proyecto_02 ]
   pull_request:
-    branches: [ main ]
+    branches: [ proyecto_02 ]
 
 env:
   AWS_REGION: us-east-2
-  ECR_REPO_NAME: laboratorio-02
-  DOCKERHUB_REPO_NAME: laboratorio-02
+  ECR_REPO_NAME: proyecto-02
+  DOCKERHUB_REPO_NAME: proyecto-02
 
 jobs:
   test:
